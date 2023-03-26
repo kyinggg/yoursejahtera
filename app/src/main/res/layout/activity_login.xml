@@ -32,7 +32,7 @@
         android:layout_marginTop="16dp"
         android:text="Don't have an account? Sign up"
         android:textColor="@android:color/holo_blue_dark" />
-    
+
 </LinearLayout>
 
 

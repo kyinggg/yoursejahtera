@@ -12,11 +12,11 @@
         <activity
             android:name=".LoginActivity"
             android:exported="true" >
-            <intent-itfilter>
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-itfilter>
+            </intent-filter>
             />
         </activity>
         <activity
