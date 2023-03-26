@@ -2,10 +2,12 @@ package com.example.yoursejahtera;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -19,6 +21,7 @@ public class UserIDSignUp extends AppCompatActivity {
     private EditText emailEditText;
     private EditText passwordEditText;
     private Button signUpButton;
+    private TextView signInTextView;
 
     private FirebaseAuth mAuth;
 
@@ -33,6 +36,7 @@ public class UserIDSignUp extends AppCompatActivity {
         emailEditText = findViewById(R.id.email_edit_text);
         passwordEditText = findViewById(R.id.password_edit_text);
         signUpButton = findViewById(R.id.sign_up_button);
+        signInTextView = findViewById(R.id.sign_in_text_view);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -48,12 +52,21 @@ public class UserIDSignUp extends AppCompatActivity {
                             public void onComplete(Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     Toast.makeText(UserIDSignUp.this, "Sign up successful", Toast.LENGTH_SHORT).show();
-                                    // You can add code here to redirect the user to the next screen
+                                    Intent intent = new Intent(UserIDSignUp.this, LoginActivity.class);
+                                    startActivity(intent);
                                 } else {
                                     Toast.makeText(UserIDSignUp.this, "Sign up failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });
+            }
+        });
+
+        signInTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UserIDSignUp.this, LoginActivity.class);
+                startActivity(intent);
             }
         });
     }
