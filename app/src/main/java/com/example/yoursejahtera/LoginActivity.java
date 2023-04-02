@@ -53,6 +53,8 @@ public class LoginActivity extends AppCompatActivity {
                                 if (task.isSuccessful()) {
                                     Toast.makeText(LoginActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
                                     // You can add code here to redirect the user to the next screen
+                                    Intent i = new Intent(LoginActivity.this, MapActivity.class);
+                                    startActivity(i);
                                 } else {
                                     Toast.makeText(LoginActivity.this, "Login failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                 }
