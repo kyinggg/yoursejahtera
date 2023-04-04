@@ -44,40 +44,37 @@ public class MapActivity extends AppCompatActivity {
         map.getController().setCenter(startPoint);
 
         // Create a list of hospital coordinates in Malaysia
-        List<GeoPoint> hospitalCoords = new ArrayList<>();
-        hospitalCoords.add(new GeoPoint(4.47962161893849, 101.03502902934433)); // Hospital Batu Gajah
-        hospitalCoords.add(new GeoPoint(4.314113336458469, 100.91074850790041)); // Hospital Changkat Melintang
-        hospitalCoords.add(new GeoPoint(5.429539250015331, 101.12800743701212)); // Hospital Gerik
-        hospitalCoords.add(new GeoPoint(4.313183021747455, 101.15649006130552)); // Hospital Kampar
-        hospitalCoords.add(new GeoPoint(4.773835492339432, 100.93183935937937)); // Hospital Kuala Kangsar
-        hospitalCoords.add(new GeoPoint(5.132758637142821, 100.48291166496475)); // Hospital Parit Buntar
-        hospitalCoords.add(new GeoPoint(4.604603425956776, 101.09025143811998)); // Hospital Raja Permaisuri Bainun
-        hospitalCoords.add(new GeoPoint(5.213679174709079, 100.68883228920896)); // Hospital Selama
-        hospitalCoords.add(new GeoPoint(4.185865164684335, 100.66179258103662)); // Hospital Seri Manjung
-        hospitalCoords.add(new GeoPoint(3.83835479008865, 101.40558441247406)); // Hospital Slim River
-        hospitalCoords.add(new GeoPoint(4.82832545853154, 101.05701068638874)); // Hospital Sungai Siput,
-        hospitalCoords.add(new GeoPoint(4.8518421992829674, 100.73699095581402)); // Hospital Taiping
-        hospitalCoords.add(new GeoPoint(4.202709707369988, 101.25956879132842)); // Hospital Tapah
-        hospitalCoords.add(new GeoPoint(4.005461020813196, 101.04053788719524)); // Hospital Teluk Intan
+        List<Hospital> hospitals = new ArrayList<>();
+        hospitals.add(new Hospital("Hopital Batu Gajah", new GeoPoint(4.47962161893849, 101.03502902934433))); // Hospital Batu Gajah
+        hospitals.add(new Hospital("Hospital Changkat Melintang", new GeoPoint(4.314113336458469, 100.91074850790041)));
+        hospitals.add(new Hospital("Hospital Gerik", new GeoPoint(5.429539250015331, 101.12800743701212)));
+        hospitals.add(new Hospital("Hospital Kampar", new GeoPoint(4.313183021747455, 101.15649006130552)));
+        hospitals.add(new Hospital("Hospital Kuala Kangsar", new GeoPoint(4.773835492339432, 100.93183935937937)));
+        hospitals.add(new Hospital("Hospital Parit Buntar", new GeoPoint(5.132758637142821, 100.48291166496475)));
+        hospitals.add(new Hospital("Hospital Raja Permaisuri Bainun", new GeoPoint(4.604603425956776, 101.09025143811998)));
+        hospitals.add(new Hospital("Hospital Selama", new GeoPoint(5.213679174709079, 100.68883228920896)));
+        hospitals.add(new Hospital("Hospital Seri Manjung", new GeoPoint(4.185865164684335, 100.66179258103662)));
+        hospitals.add(new Hospital("Hospital Slim River", new GeoPoint(3.83835479008865, 101.40558441247406)));
+        hospitals.add(new Hospital("Hospital Sungai Siput", new GeoPoint(4.82832545853154, 101.05701068638874)));
+        hospitals.add(new Hospital("Hospital Taiping", new GeoPoint(4.8518421992829674, 100.73699095581402)));
+        hospitals.add(new Hospital("Hospital Tapah", new GeoPoint(4.202709707369988, 101.25956879132842)));
+        hospitals.add(new Hospital("Hospital Teluk Intan", new GeoPoint(4.005461020813196, 101.04053788719524)));
 
         // Loop through the list of hospital coordinates and add a marker for each one
-        for (int i = 0; i < hospitalCoords.size(); i++) {
-            GeoPoint coord = hospitalCoords.get(i);
+        for (int i = 0; i < hospitals.size(); i++) {
+            Hospital hospital = hospitals.get(i);
+            String name = hospital.getName();
+            GeoPoint location = hospital.getLocation();
             Marker marker = new Marker(map);
-            marker.setPosition(coord);
+            marker.setPosition(location);
             marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
             marker.setIcon(getResources().getDrawable(R.drawable.marker_icon));
-            marker.setTitle("Hospital " + (i+1));
-            marker.setSnippet("This is the information for Hospital " + (i+1));
-            marker.setOnMarkerClickListener(new Marker.OnMarkerClickListener() {
-                @Override
-                public boolean onMarkerClick(Marker marker, MapView mapView) {
-                    Toast.makeText(getApplicationContext(), marker.getSnippet(), Toast.LENGTH_SHORT).show();
-                    return true;
-                }
-            });
+            marker.setTitle(name);
+            marker.setSnippet("Vaccine is available in this hospital.");
+            marker.setInfoWindow(new CustomInfoWindow(map)); // Set the custom InfoWindow
             map.getOverlays().add(marker);
         }
+
 
 
         searchButton.setOnClickListener(new View.OnClickListener() {
