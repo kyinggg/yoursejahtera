@@ -3,8 +3,10 @@ package com.example.yoursejahtera;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -74,7 +76,6 @@ public class MapActivity extends AppCompatActivity {
             marker.setInfoWindow(new CustomInfoWindow(map)); // Set the custom InfoWindow
             map.getOverlays().add(marker);
         }
-
 
 
         searchButton.setOnClickListener(new View.OnClickListener() {
