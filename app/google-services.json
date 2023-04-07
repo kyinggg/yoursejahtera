@@ -14,7 +14,15 @@
       },
       "oauth_client": [
         {
-          "client_id": "511156087466-kqud0gdubk9ijur4qi18eibfb02dum9o.apps.googleusercontent.com",
+          "client_id": "511156087466-rad27cd17nl16h865f8ch0spcsdn1sc4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.yoursejahtera",
+            "certificate_hash": "78832d35d7302db581d059dd083de038eff4779e"
+          }
+        },
+        {
+          "client_id": "511156087466-o2korf5v24jevhghdoqk2e1eltsg5vag.apps.googleusercontent.com",
           "client_type": 3
         }
       ],

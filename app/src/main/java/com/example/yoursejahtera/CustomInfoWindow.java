@@ -1,16 +1,19 @@
 package com.example.yoursejahtera;
 
 import android.content.Intent;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.osmdroid.views.MapView;
 import org.osmdroid.views.overlay.Marker;
 import org.osmdroid.views.overlay.infowindow.MarkerInfoWindow;
 
 public class CustomInfoWindow extends MarkerInfoWindow {
-
+    private BottomNavigationView bottomNavigationView;
     public CustomInfoWindow(MapView mapView){
         super(R.layout.custom_info_window, mapView);
     }
@@ -34,5 +37,8 @@ public class CustomInfoWindow extends MarkerInfoWindow {
                 v.getContext().startActivity(in);
             }
         });
+
+
     }
+
 }

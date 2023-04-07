@@ -2,7 +2,9 @@ package com.example.yoursejahtera;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -11,6 +13,8 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.Calendar;
 
@@ -25,7 +29,7 @@ public class Appointment extends AppCompatActivity {
     private int selectedYear;
     private int selectedMonth;
     private int selectedDay;
-
+    private BottomNavigationView bottomNavigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,6 +96,31 @@ public class Appointment extends AppCompatActivity {
                             }
                         }, year, month, day);
                 datePickerDialog.show();
+            }
+        });
+
+        bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected( MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.navigation_home:
+                        Intent homeIntent = new Intent(Appointment.this, MapActivity.class);
+                        startActivity(homeIntent);
+                        return true;
+                    case R.id.navigation_appointment:
+                        Intent dashboardIntent = new Intent(Appointment.this, Appointment.class);
+                        startActivity(dashboardIntent);
+                        return true;
+                    case R.id.navigation_notifications:
+                        Intent profileIntent = new Intent(Appointment.this, Profile.class);
+                        startActivity(profileIntent);
+                        return true;
+                    default:
+                        return false;
+                }
+//                default:
+//                return false;
             }
         });
     }
