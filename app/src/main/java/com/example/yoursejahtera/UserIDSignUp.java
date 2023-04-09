@@ -25,6 +25,7 @@ public class UserIDSignUp extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,7 +53,7 @@ public class UserIDSignUp extends AppCompatActivity {
                             public void onComplete(Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     Toast.makeText(UserIDSignUp.this, "Sign up successful", Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(UserIDSignUp.this, LoginActivity.class);
+                                    Intent intent = new Intent(UserIDSignUp.this, Registration.class);
                                     startActivity(intent);
                                 } else {
                                     Toast.makeText(UserIDSignUp.this, "Sign up failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
