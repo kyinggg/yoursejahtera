@@ -3,6 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Win10/OneDrive/Documents/GitHub/yoursejahtera/app/src/main/res/drawable/ic_launcher_background.xml" value="0.19583333333333333" />
+        <entry key="..\:/Users/Win10/OneDrive/Documents/GitHub/yoursejahtera/app/src/main/res/layout/activity_appointment.xml" value="0.165625" />
+        <entry key="..\:/Users/Win10/OneDrive/Documents/GitHub/yoursejahtera/app/src/main/res/layout/activity_bottom_navigation.xml" value="0.17300724637681159" />
+        <entry key="..\:/Users/Win10/OneDrive/Documents/GitHub/yoursejahtera/app/src/main/res/layout/activity_login.xml" value="0.1" />
+        <entry key="..\:/Users/Win10/OneDrive/Documents/GitHub/yoursejahtera/app/src/main/res/layout/activity_main.xml" value="0.16077898550724637" />
+        <entry key="..\:/Users/Win10/OneDrive/Documents/GitHub/yoursejahtera/app/src/main/res/layout/activity_main2.xml" value="0.1" />
+        <entry key="..\:/Users/Win10/OneDrive/Documents/GitHub/yoursejahtera/app/src/main/res/layout/activity_main3.xml" value="0.1" />
+        <entry key="..\:/Users/Win10/OneDrive/Documents/GitHub/yoursejahtera/app/src/main/res/layout/activity_map2.xml" value="0.1453804347826087" />
+        <entry key="..\:/Users/Win10/OneDrive/Documents/GitHub/yoursejahtera/app/src/main/res/layout/activity_profile.xml" value="0.1265625" />
+        <entry key="..\:/Users/Win10/OneDrive/Documents/GitHub/yoursejahtera/app/src/main/res/layout/activity_test.xml" value="0.16077898550724637" />
+        <entry key="..\:/Users/Win10/OneDrive/Documents/GitHub/yoursejahtera/app/src/main/res/layout/activity_user_idsign_up.xml" value="0.17300724637681159" />
+        <entry key="..\:/Users/Win10/OneDrive/Documents/GitHub/yoursejahtera/app/src/main/res/layout/custom_info_window.xml" value="0.17300724637681159" />
+        <entry key="..\:/Users/Win10/OneDrive/Documents/GitHub/yoursejahtera/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.1" />
         <entry key="..\:/Users/Xavier Lee/AndroidStudioProjects/YourSejahtera/app/src/main/res/layout/activity_user_idsign_up.xml" value="0.2" />
         <entry key="..\:/yoursejahtera/app/src/main/res/drawable-v24/app_icons_foreground.xml" value="0.12037037037037036" />
         <entry key="..\:/yoursejahtera/app/src/main/res/drawable/ic_launcher_background.xml" value="0.12037037037037036" />
