@@ -11,6 +11,12 @@
         android:icon="@drawable/appointment_icon"
         android:title="@string/appointment"
         app:showAsAction="ifRoom" />
+<!--    <item-->
+<!--        android:id="@+id/navigation_info"-->
+<!--        android:icon="@drawable/profile_icon"-->
+<!--        android:title="@string/profile"-->
+<!--        app:showAsAction="ifRoom" />-->
+
     <item
         android:id="@+id/navigation_notifications"
         android:icon="@drawable/profile_icon"

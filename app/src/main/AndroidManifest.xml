@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.YourSejahtera">
         <activity
+            android:name=".UserInfo"
+            android:exported="false" />
+        <activity
+            android:name=".DisplayUserInfo"
+            android:exported="false" />
+        <activity
             android:name=".Registration"
             android:exported="false" />
         <activity

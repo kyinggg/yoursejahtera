@@ -49,11 +49,11 @@ public class Profile extends AppCompatActivity {
             public boolean onNavigationItemSelected( MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.navigation_home:
-                        Intent homeIntent = new Intent(Profile.this, MapActivity.class);
+                        Intent homeIntent = new Intent(Profile.this, DisplayUserInfo.class);
                         startActivity(homeIntent);
                         return true;
                     case R.id.navigation_appointment:
-                        Intent dashboardIntent = new Intent(Profile.this, Appointment.class);
+                        Intent dashboardIntent = new Intent(Profile.this, MapActivity.class);
                         startActivity(dashboardIntent);
                         return true;
                     case R.id.navigation_notifications:

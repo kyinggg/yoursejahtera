@@ -130,35 +130,21 @@ public class MapActivity extends AppCompatActivity{
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-//                FirebaseAuth.getInstance();
-//                logoutBtn.setOnClickListener(new View.OnClickListener(){
-//                @Override
-//                public void onClick (View v){
-//                    FirebaseAuth.getInstance().signOut();
-//                    Intent intent = new Intent(MapActivity.this, LoginActivity.class);
-//                    startActivity(intent);
-//                }
-//        });
+
             }
         });
-//        logoutBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                signOut();
-//
-//            }
-//        });
+
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected( MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.navigation_home:
-                        Intent homeIntent = new Intent(MapActivity.this, MapActivity.class);
+                        Intent homeIntent = new Intent(MapActivity.this, DisplayUserInfo.class);
                         startActivity(homeIntent);
                         return true;
                     case R.id.navigation_appointment:
-                        Intent dashboardIntent = new Intent(MapActivity.this, Appointment.class);
+                        Intent dashboardIntent = new Intent(MapActivity.this, MapActivity.class);
                         startActivity(dashboardIntent);
                         return true;
                     case R.id.navigation_notifications:
@@ -168,47 +154,9 @@ public class MapActivity extends AppCompatActivity{
                     default:
                         return false;
                 }
-//                default:
-//                return false;
+
             }
         });
-//        mGoogleSignInClient.signOut()
-//                .addOnCompleteListener(this, new OnCompleteListener<Void>() {
-//                    @Override
-//                    public void onComplete(Task<Void> task) {
-//                        if (task.isSuccessful()) {
-//                            // Logout was successful
-//                            // You can do any necessary actions here, like redirecting to the login screen
-//                            Intent intent = new Intent(MapActivity.this, LoginActivity.class);
-//                            startActivity(intent);
-//                        } else {
-//                            // Logout failed
-//                            // Handle the error appropriately, e.g. by displaying a toast or logging an error message
-//                        }
-//                    }
-//                });
-
-
-//        Button logoutButton = findViewById(R.id.logout_button);
-//        logoutButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                // Sign out from Firebase Auth
-//                mAuth.signOut();
-//
-//                // Sign out from Google Sign In client
-//                mGoogleSignInClient.signOut()
-//                        .addOnCompleteListener(MapActivity.this, new OnCompleteListener<Void>() {
-//                            @Override
-//                            public void onComplete( Task<Void> task) {
-//                                // Redirect to login activity
-//                                Intent intent = new Intent(MapActivity.this, LoginActivity.class);
-//                                startActivity(intent);
-//                                finish();
-//                            }
-//                        });
-//            }
-//        });
 
 
 
@@ -218,11 +166,6 @@ public class MapActivity extends AppCompatActivity{
 
     }
 
-//FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-//    public void signOut() {
-//        // [START auth_sign_out]
-//       FirebaseAuth.getInstance().signOut();
-//
-//    }
+
 
 }

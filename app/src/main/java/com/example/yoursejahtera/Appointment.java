@@ -19,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -124,6 +125,7 @@ public class Appointment extends AppCompatActivity {
 
 
 
+
         submitButton.setOnClickListener(new View.OnClickListener() {
             @TargetApi(Build.VERSION_CODES.O)
             @Override
@@ -141,17 +143,20 @@ public class Appointment extends AppCompatActivity {
                 int day = selectedDay;
                 String dateString = String.format("%d-%02d-%02d", year, month, day);
 
-                Toast.makeText(Appointment.this, "Hello your appointment is on " + formattedTime + dateString, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(Appointment.this, "Hello your appointment is on " + formattedTime + dateString, Toast.LENGTH_SHORT).show();
                 Map<String, Object> appointment = new HashMap<>();
                 String TIME = formattedTime;
                 String DATE = dateString;
                 appointment.put("time:", TIME);
                 appointment.put("date:", DATE);
+                appointment.put("hospital", hospitalName);
 
-                db.collection("Appointment").add(appointment)
-                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                String userUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+                db.collection("users").document(userUid).collection("appointments").document().set(appointment)
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
-                            public void onSuccess(DocumentReference documentReference) {
+                            public void onSuccess(Void aVoid) {
                                 Toast.makeText(Appointment.this, "Data saved", Toast.LENGTH_SHORT).show();
                             }
                         })
@@ -169,30 +174,6 @@ public class Appointment extends AppCompatActivity {
 
 
 
-        bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected( MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.navigation_home:
-                        Intent homeIntent = new Intent(Appointment.this, MapActivity.class);
-                        startActivity(homeIntent);
-                        return true;
-                    case R.id.navigation_appointment:
-                        Intent dashboardIntent = new Intent(Appointment.this, Appointment.class);
-                        startActivity(dashboardIntent);
-                        return true;
-                    case R.id.navigation_notifications:
-                        Intent profileIntent = new Intent(Appointment.this, Profile.class);
-                        startActivity(profileIntent);
-                        return true;
-                    default:
-                        return false;
-                }
-//                default:
-//                return false;
-            }
-        });
     }
 }
 
