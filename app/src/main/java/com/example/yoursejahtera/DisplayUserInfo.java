@@ -2,24 +2,26 @@ package com.example.yoursejahtera;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
+import android.view.MenuItem;
+
 import android.widget.TextView;
 import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentSnapshot;
+
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import org.jetbrains.annotations.NotNull;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class DisplayUserInfo extends AppCompatActivity {
 
-
+    private BottomNavigationView bottomNavigationView;
         MaterialButton read;
         FirebaseFirestore db;
 
@@ -29,90 +31,103 @@ public class DisplayUserInfo extends AppCompatActivity {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_display_user_info);
             db = FirebaseFirestore.getInstance();
-            read = findViewById(R.id.readbtn);
 
-            read.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
+            String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+           // read.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
 
 
-                    db.collection("Registration")
-                            //.whereEqualTo("Gender",switchstatus)
+
+                    db.collection("users").document(userID).collection("registration")
                             .get()
                             .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                                 @Override
-                                public void onComplete( @NotNull Task<QuerySnapshot> task) {
-
-                                    if (task.isSuccessful()){
-
-                                        Toast.makeText(DisplayUserInfo.this,"Successful",Toast.LENGTH_LONG).show();
+                                public void onComplete( Task<QuerySnapshot> task) {
+                                    if (task.isSuccessful()) {
                                         for (QueryDocumentSnapshot document : task.getResult()) {
-                                            Log.d(TAG, document.getId() + " => " + document.getData());
+                                            // Get the registration data from the document
                                             String name = document.getString("name");
+
+
                                             TextView nameTextView = findViewById(R.id.nameTextView);
-                                        nameTextView.setText("Name: " + name);
+                                            nameTextView.setText("Name: " + name);
+
+                                            String ic = document.getString("ic");
+                                            TextView icTextView = findViewById(R.id.icTextView);
+                                            icTextView.setText("IC Number: " + ic);
+
+                                            String gender = document.getString("gender");
+                                            TextView genderTextView = findViewById(R.id.genderTextView);
+                                            genderTextView.setText("Gender: " + gender);
+
+                                            String phone = document.getString("phone");
+                                            TextView phoneTextView = findViewById(R.id.phoneTextView);
+                                            phoneTextView.setText("Phone Number: " + phone);
+
+
+                                            // Retrieve Appointment data
+                                            db.collection("users").document(userID).collection("appointments")
+                                                    .get()
+                                                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                                        @Override
+                                                        public void onComplete( Task<QuerySnapshot> task) {
+                                                            if (task.isSuccessful()) {
+                                                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                                                    // Get the appointment data from the document
+                                                                    String hospitalName = document.getString("hospital_name");
+
+
+
+                                                                    String date = document.getString("date:");
+                                                                    TextView dateTextView = findViewById(R.id.dateTextView);
+                                                                    dateTextView.setText("Appointment Date: " + date);
+
+                                                                    String hospital = document.getString("hospital");
+                                                                    TextView hospitalTextView = findViewById(R.id.hospitalTextView);
+                                                                    hospitalTextView.setText("Hospital Name: " + hospital);
+
+                                                                    String time = document.getString("time:");
+                                                                    TextView timeTextView = findViewById(R.id.timeTextView);
+                                                                    timeTextView.setText("Appointment Time: " + time);
+                                                                }
+                                                            }
+                                                            else {
+                                                                Log.d(TAG, "Error getting appointment documents: ", task.getException());
+                                                            }
+                                                        }
+                                                    });
                                         }
-
-
-
-                                    }else {
-
-                                        Toast.makeText(DisplayUserInfo.this,"Failed",Toast.LENGTH_LONG).show();
-
+                                    } else {
+                                        Log.d(TAG, "Error getting registration documents: ", task.getException());
                                     }
-
                                 }
                             });
+            bottomNavigationView = findViewById(R.id.bottom_navigation);
+            bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected( MenuItem item) {
+                    switch (item.getItemId()) {
+                        case R.id.navigation_home:
+                            Intent homeIntent = new Intent(DisplayUserInfo.this, DisplayUserInfo.class);
+                            startActivity(homeIntent);
+                            return true;
+                        case R.id.navigation_appointment:
+                            Intent dashboardIntent = new Intent(DisplayUserInfo.this, MapActivity.class);
+                            startActivity(dashboardIntent);
+                            return true;
+                        case R.id.navigation_notifications:
+                            Intent profileIntent = new Intent(DisplayUserInfo.this, Profile.class);
+                            startActivity(profileIntent);
+                            return true;
+                        default:
+                            return false;
+                    }
 
                 }
             });
+                }
+
         }
 
-
-//        protected void onCreate(Bundle savedInstanceState) {
-//            super.onCreate(savedInstanceState);
-//            setContentView(R.layout.activity_display_user_info);
-//            db = FirebaseFirestore.getInstance();
-//            read = findViewById(R.id.readbtn);
-//            String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
-//
-//
-//            read.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//
-//
-//                    db.collection("Registration")
-//                            .document(userID)
-//                            .get()
-//                            .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>(){
-//                                @Override
-//                                public void onComplete( Task<DocumentSnapshot> task) {
-//                                    if (task.isSuccessful()) {
-//                                        DocumentSnapshot document = task.getResult();
-//                                        if (document.exists()) {
-//                                            // Get the user data from the document
-//                                            String name = document.getString("name");
-//                                            //int age = document.getLong("age").intValue();
-//                                            // etc.
-////
-////                                            TextView nameTextView = findViewById(R.id.nameTextView);
-////
-////
-////                                            nameTextView.setText("Name: " + name);
-//
-//                                            Log.d(TAG, "Name: " + name + ", Age: " );
-//                                        } else {
-//                                            Log.d(TAG, "No such document");
-//                                        }
-//                                    } else {
-//                                        Log.d(TAG, "get failed with ", task.getException());
-//                                    }
-//                                }
-//                            });
-//
-//                }
-//            });
-//        }
-}
 
