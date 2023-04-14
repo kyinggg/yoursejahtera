@@ -46,6 +46,7 @@ public class Appointment extends AppCompatActivity {
     private int selectedYear;
     private int selectedMonth;
     private int selectedDay;
+    private String selectedVaccineType;
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -78,7 +79,7 @@ public class Appointment extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // Handle the selected vaccine type
-                        String selectedVaccineType = vaccineTypes[which];
+                        selectedVaccineType = vaccineTypes[which];
                         chooseTypeButton.setText(selectedVaccineType);
                     }
                 });
@@ -166,13 +167,17 @@ public class Appointment extends AppCompatActivity {
                 int day = selectedDay;
                 String dateString = String.format("%d-%02d-%02d", year, month, day);
 
+
+
                 //Toast.makeText(Appointment.this, "Hello your appointment is on " + formattedTime + dateString, Toast.LENGTH_SHORT).show();
                 Map<String, Object> appointment = new HashMap<>();
                 String TIME = formattedTime;
                 String DATE = dateString;
+                String VACCINE_TYPE = selectedVaccineType;
                 appointment.put("time:", TIME);
                 appointment.put("date:", DATE);
                 appointment.put("hospital", hospitalName);
+                appointment.put("vaccine type",selectedVaccineType);
 
                 String userUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
@@ -181,6 +186,8 @@ public class Appointment extends AppCompatActivity {
                             @Override
                             public void onSuccess(Void aVoid) {
                                 Toast.makeText(Appointment.this, "Data saved", Toast.LENGTH_SHORT).show();
+                                Intent i = new Intent(Appointment.this,  DisplayUserInfo.class);
+                                startActivity(i);
                             }
                         })
                         .addOnFailureListener(new OnFailureListener() {
@@ -192,6 +199,9 @@ public class Appointment extends AppCompatActivity {
 
 
             }
+
+
+
         });
 
 
