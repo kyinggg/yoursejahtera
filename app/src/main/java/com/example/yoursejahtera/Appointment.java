@@ -3,6 +3,7 @@ package com.example.yoursejahtera;
 import android.annotation.TargetApi;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -34,6 +36,7 @@ import java.util.Map;
 public class Appointment extends AppCompatActivity {
 
     private TextView hospitalNameTextView;
+    private Button chooseTypeButton;
     private Button chooseTimeButton;
     private Button chooseDateButton;
     private Button submitButton;
@@ -53,6 +56,7 @@ public class Appointment extends AppCompatActivity {
         setContentView(R.layout.activity_appointment);
 
         hospitalNameTextView = findViewById(R.id.hospital_name_text_view);
+        chooseTypeButton = findViewById(R.id.choose_type_button);
         chooseTimeButton = findViewById(R.id.choose_time_button);
         chooseDateButton = findViewById(R.id.choose_date_button);
         submitButton = findViewById(R.id.submit_button);
@@ -61,7 +65,26 @@ public class Appointment extends AppCompatActivity {
         String hospitalName = getIntent().getStringExtra("name");
         hospitalNameTextView.setText(hospitalName);
 
+        chooseTypeButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                // Create an array of strings containing the names of the 3 vaccine types
+                String[] vaccineTypes = {"First Dose", "Second Dose", "Booster"};
 
+                // Create an AlertDialog to display the vaccine types as a list
+                AlertDialog.Builder builder = new AlertDialog.Builder(Appointment.this);
+                builder.setTitle("Choose vaccine type");
+                builder.setItems(vaccineTypes, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Handle the selected vaccine type
+                        String selectedVaccineType = vaccineTypes[which];
+                        chooseTypeButton.setText(selectedVaccineType);
+                    }
+                });
+                builder.show();
+            }
+        });
 
 
         chooseTimeButton.setOnClickListener(new View.OnClickListener() {
