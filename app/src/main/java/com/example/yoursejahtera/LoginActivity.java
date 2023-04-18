@@ -39,6 +39,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText passwordEditText;
     private Button loginButton;
     private TextView signUpTextView;
+    private TextView forgotpwdTextView;
     private Button googleTextView;
     private FirebaseAuth mAuth;
     private SignInClient oneTapClient;
@@ -63,6 +64,7 @@ public class LoginActivity extends AppCompatActivity {
         passwordEditText = findViewById(R.id.password_edit_text);
         loginButton = findViewById(R.id.login_button);
         signUpTextView = findViewById(R.id.sign_up_text_view);
+        forgotpwdTextView = findViewById(R.id.forgot_pwd_text_view);
         googleTextView = findViewById(R.id.google_login_text_view);
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -101,6 +103,16 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        
+          //forgot password
+        forgotpwdTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(LoginActivity.this, "You can reset your password now!", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(LoginActivity.this,ForgotPasswordActivity.class));
+            }
+        });
+               
 
         googleTextView.setOnClickListener(new View.OnClickListener() {
             @Override
