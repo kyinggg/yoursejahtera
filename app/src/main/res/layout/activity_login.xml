@@ -50,10 +50,17 @@
             android:id="@+id/sign_up_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
+
             android:layout_marginTop="16dp"
             android:text="Don't have an account? Sign up"
             android:textColor="@android:color/holo_blue_dark" />
+
+        <TextView
+            android:id="@+id/forgot_pwd_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Forgot password?"
+            android:textColor="@android:color/holo_blue_dark" />/>
 
         <Button
             android:id="@+id/google_login_text_view"
@@ -64,7 +71,7 @@
             android:background= "#D64937"
             android:text="Sign In With Google"
             android:textSize="12dp"
-           />
+            />
 
     </LinearLayout>
 </ScrollView>
