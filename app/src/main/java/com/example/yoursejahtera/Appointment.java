@@ -187,6 +187,8 @@ public class Appointment extends AppCompatActivity {
                             public void onSuccess(Void aVoid) {
                                 Toast.makeText(Appointment.this, "Data saved", Toast.LENGTH_SHORT).show();
                                 Intent i = new Intent(Appointment.this,  DisplayUserInfo.class);
+                                i.putExtra("hospitalName", hospitalName);
+
                                 startActivity(i);
                             }
                         })

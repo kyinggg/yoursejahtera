@@ -5,7 +5,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@color/light_gray">
+       >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -70,7 +70,7 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
                 android:layout_marginBottom="15dp"
-                android:background="@drawable/border">
+              >
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -84,8 +84,8 @@
                         android:layout_height="25dp"
                         android:layout_centerVertical="true"
                         android:id="@+id/ic_profile"
-                        android:contentDescription="@string/name"
-                        android:background="@drawable/ic_profile"/>
+
+                        />
 
                     <TextView
                         android:id="@+id/textView_show_full_name"
@@ -117,9 +117,9 @@
                         android:layout_height="25dp"
                         android:layout_marginTop="20dp"
                         android:id="@+id/ic_email"
-                        android:contentDescription="@string/email"
+
                         android:layout_centerVertical="true"
-                        android:background="@drawable/ic_email"/>
+                       />
 
                     <TextView
                         android:id="@+id/textView_show_ic"
@@ -153,8 +153,8 @@
                         android:layout_marginTop="20dp"
                         android:layout_centerVertical="true"
                         android:id="@+id/ic_dob"
-                        android:contentDescription="@string/dob"
-                        android:background="@drawable/ic_birthday"/>
+
+                       />
 
                     <TextView
                         android:id="@+id/textView_show_address"
@@ -186,10 +186,10 @@
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:id="@+id/ic_gender"
-                        android:contentDescription="@string/gender"
+
                         android:layout_centerVertical="true"
                         android:layout_marginTop="20dp"
-                        android:background="@drawable/ic_gender"/>
+                      />
 
                     <TextView
                         android:id="@+id/textView_show_gender"
@@ -222,8 +222,8 @@
                         android:layout_centerVertical="true"
                         android:layout_marginTop="20dp"
                         android:id="@+id/ic_mobile"
-                        android:contentDescription="@string/mobile"
-                        android:background="@drawable/ic_mobile"/>
+
+                        />
 
                     <TextView
                         android:id="@+id/textView_show_mobile"
@@ -246,7 +246,12 @@
                     android:elevation="10dp"
                     android:visibility="gone" />
             </RelativeLayout>
-
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottom_navigation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                app:menu="@menu/bottom_navigation_menu" />
         </LinearLayout>
     </ScrollView>
 

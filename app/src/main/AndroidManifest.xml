@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.YourSejahtera">
         <activity
-            android:name=".UserInfo"
+            android:name=".ChangeAppointment"
             android:exported="false" />
         <activity
             android:name=".DisplayUserInfo"

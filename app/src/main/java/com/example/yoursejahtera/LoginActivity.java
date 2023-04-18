@@ -105,13 +105,13 @@ public class LoginActivity extends AppCompatActivity {
         });
         
           //forgot password
-        forgotpwdTextView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(LoginActivity.this, "You can reset your password now!", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(LoginActivity.this,ForgotPasswordActivity.class));
-            }
-        });
+//        forgotpwdTextView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(LoginActivity.this, "You can reset your password now!", Toast.LENGTH_SHORT).show();
+//                startActivity(new Intent(LoginActivity.this,ForgotPasswordActivity.class));
+//            }
+//        });
                
 
         googleTextView.setOnClickListener(new View.OnClickListener() {
