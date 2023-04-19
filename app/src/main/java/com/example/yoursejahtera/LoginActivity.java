@@ -32,7 +32,8 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import org.jetbrains.annotations.Nullable;
 
 
-
+//email&password (done by Lee Lek Xiang), google login (done by Ng Kai Ying),
+// forgot password (done by Soo Wei Chern)
 public class LoginActivity extends AppCompatActivity {
 
     private EditText emailEditText;
@@ -73,6 +74,8 @@ public class LoginActivity extends AppCompatActivity {
                 .build();
         mAuth = FirebaseAuth.getInstance();
         GoogleSignInClient googleSignInClient = GoogleSignIn.getClient(this, gso);
+
+        //done by Lee Lek Xiang
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -103,7 +106,8 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        
+
+        //done by Soo Wei Chern
           //forgot password
 //        forgotpwdTextView.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -113,7 +117,7 @@ public class LoginActivity extends AppCompatActivity {
 //            }
 //        });
                
-
+        //done by Ng Kai Ying
         googleTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

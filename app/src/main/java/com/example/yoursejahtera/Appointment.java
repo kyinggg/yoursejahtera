@@ -32,7 +32,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
-
+// appointment UI (done by Lee Lek Xiang), storing appointment info (done by Ang Jia Xuan)
 public class Appointment extends AppCompatActivity {
 
     private TextView hospitalNameTextView;
@@ -40,17 +40,15 @@ public class Appointment extends AppCompatActivity {
     private Button chooseTimeButton;
     private Button chooseDateButton;
     private Button submitButton;
-
     private int selectedHour;
     private int selectedMinute;
     private int selectedYear;
     private int selectedMonth;
     private int selectedDay;
     private String selectedVaccineType;
-
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-
     private BottomNavigationView bottomNavigationView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -114,12 +112,10 @@ public class Appointment extends AppCompatActivity {
                                 }else{
                                     chooseTimeButton.setText(selectedHour + ":" + selectedMinute);
                                 }
-
                             }
                         }, hour, minute, true);
                 timePickerDialog.show();
             }
-
         });
 
         chooseDateButton.setOnClickListener(new View.OnClickListener() {
@@ -130,7 +126,6 @@ public class Appointment extends AppCompatActivity {
                 int month = c.get(Calendar.MONTH);
                 int day = c.get(Calendar.DAY_OF_MONTH);
 
-
                 DatePickerDialog datePickerDialog = new DatePickerDialog(Appointment.this,
                         new DatePickerDialog.OnDateSetListener() {
                             @Override
@@ -138,16 +133,12 @@ public class Appointment extends AppCompatActivity {
                                 selectedYear = year;
                                 selectedMonth = month;
                                 selectedDay = dayOfMonth;
-
-
                                 chooseDateButton.setText(selectedDay + "/" + (selectedMonth + 1) + "/" + selectedYear);
                             }
                         }, year, month, day);
                 datePickerDialog.show();
             }
         });
-
-
 
 
         submitButton.setOnClickListener(new View.OnClickListener() {
@@ -168,7 +159,7 @@ public class Appointment extends AppCompatActivity {
                 String dateString = String.format("%d-%02d-%02d", year, month, day);
 
 
-
+                //storing information to firebase (done by Ang Jia Xuan)
                 //Toast.makeText(Appointment.this, "Hello your appointment is on " + formattedTime + dateString, Toast.LENGTH_SHORT).show();
                 Map<String, Object> appointment = new HashMap<>();
                 String TIME = formattedTime;
@@ -188,7 +179,6 @@ public class Appointment extends AppCompatActivity {
                                 Toast.makeText(Appointment.this, "Data saved", Toast.LENGTH_SHORT).show();
                                 Intent i = new Intent(Appointment.this,  DisplayUserInfo.class);
                                 i.putExtra("hospitalName", hospitalName);
-
                                 startActivity(i);
                             }
                         })
@@ -198,17 +188,8 @@ public class Appointment extends AppCompatActivity {
                                 Toast.makeText(Appointment.this, "Data not saved", Toast.LENGTH_SHORT).show();
                             }
                         });
-
-
             }
-
-
-
         });
-
-
-
-
     }
 }
 

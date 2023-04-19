@@ -26,6 +26,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 //import com.google.firebase.database.FirebaseDatabase;
 //import com.google.firebase.database.ValueEventListener;
 
+//logout function (done by Ng Kai Ying), profile page (done by Soo Wei Chern)
 public class Profile extends AppCompatActivity {
     private Button logoutBtn;
     private BottomNavigationView bottomNavigationView;
@@ -38,7 +39,7 @@ public class Profile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-
+        logoutBtn = findViewById(R.id.logout_button);
 //        getSupportActionBar().setTitle("Profile");
 //        textViewWelcome = findViewById(R.id.textView_show_welcome);
 //        textViewFullName = findViewById(R.id.textView_show_full_name);
@@ -48,8 +49,6 @@ public class Profile extends AppCompatActivity {
 //        textViewMobile = findViewById(R.id.textView_show_mobile);
 //        progressBar = findViewById(R.id.progressBar);
 
-        logoutBtn = findViewById(R.id.logout_button);
-
 //        mAuth = FirebaseAuth.getInstance();
 //        FirebaseUser firebaseUser = mAuth.getCurrentUser();
 //        if(firebaseUser == null){
@@ -58,6 +57,8 @@ public class Profile extends AppCompatActivity {
 //            progressBar.setVisibility((View.VISIBLE));
 //            //showUserProfile(firebaseUser);
 //        }
+
+        //logout function
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .build();
@@ -73,7 +74,7 @@ public class Profile extends AppCompatActivity {
         });
 
 
-
+    //bottom navigation
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -118,6 +119,7 @@ public class Profile extends AppCompatActivity {
         });
 
     }
+//Profile Page, done by Soo Wei Chern
 
 //    private void showUserProfile(FirebaseUser firebaseUser) {
 //        String userID = firebaseUser.getUid();

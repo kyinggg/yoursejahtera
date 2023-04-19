@@ -21,6 +21,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+//display user and appointment info (done by Ng Kai Ying)
 public class DisplayUserInfo extends AppCompatActivity {
 
     private BottomNavigationView bottomNavigationView;

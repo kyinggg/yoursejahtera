@@ -43,7 +43,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-
+//change appointment (done by Ng Kai Ying)
 public class ChangeAppointment extends AppCompatActivity {
 
     private TextView hospitalNameTextView;
@@ -58,9 +58,7 @@ public class ChangeAppointment extends AppCompatActivity {
     private int selectedMonth;
     private int selectedDay;
     private String selectedVaccineType;
-
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-
     private BottomNavigationView bottomNavigationView;
     private String userId;
     private String appointmentId;
@@ -167,18 +165,12 @@ public class ChangeAppointment extends AppCompatActivity {
                 // Format the time
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
                 String formattedTime = time.format(formatter);
-
                 int year = selectedYear;
                 int month = selectedMonth + 1; // Add 1 because Calendar.MONTH is zero-based
                 int day = selectedDay;
                 String dateString = String.format("%d-%02d-%02d", year, month, day);
 
-
-
-
                 db.collection("users").document(userUid).collection("appointments")
-
-
                     .get()
                     .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                         @Override

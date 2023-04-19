@@ -23,6 +23,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.HashMap;
 import java.util.Map;
 
+//user registration (done by Ang Jia Xuan)
 public class Registration extends AppCompatActivity {
 
     private TextView name;
@@ -36,90 +37,7 @@ public class Registration extends AppCompatActivity {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_registration);
-//
-//        //spinner for gender selection
-//        Spinner genderSpinner = findViewById(R.id.gender_spinner);
-//        String[] genderOptions = new String[]{"Male", "Female", "Other"};
-//        ArrayAdapter<String> genderAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, genderOptions);
-//        genderSpinner.setAdapter(genderAdapter);
-//
-//        name = findViewById(R.id.name_edit_text);
-//        ic = findViewById(R.id.ic_edit_text);
-//        address = findViewById(R.id.address_edit_text);
-//        phone = findViewById(R.id.phone_edit_text);
-//        gender = findViewById(R.id.gender_spinner);
-//        register = findViewById(R.id.registerBtn);
-//
-//        register.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                String Name = name.getText().toString();
-//                String IC = ic.getText().toString();
-//                String Address = address.getText().toString();
-//                String Phone_Number = phone.getText().toString();
-//                String selectedGender = gender.getSelectedItem().toString();
-//
-//                if (selectedGender.equals("Select Gender")) {
-//                    Toast.makeText(Registration.this, "Please select your gender", Toast.LENGTH_SHORT).show();
-//                    return;
-//                }
-//
-//
-//                validateUser(Name, IC, Address, Phone_Number);
-//                Toast.makeText(Registration.this, Name +","+ IC+","+Address+","+Phone_Number+","+selectedGender, Toast.LENGTH_SHORT).show();
-//
-//
-//                Map<String, Object> registration = new HashMap<>();
-//                String NAME = Name;
-//                String Ic = IC;
-//                String ADDRESS = Address;
-//                String PHONE = Phone_Number;
-//                String GENDER = selectedGender;
-//
-//                registration.put("name:", NAME);
-//                registration.put("ic:", Ic);
-//                registration.put("address:", ADDRESS);
-//                registration.put("phone:", PHONE);
-//                registration.put("gender",GENDER);
-//
-////                db.collection("Registration").add(registration)
-////                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-////                            @Override
-////                            public void onSuccess(DocumentReference documentReference) {
-////                                Toast.makeText(Registration.this, "Data saved", Toast.LENGTH_SHORT).show();
-////                            }
-////                        })
-////                        .addOnFailureListener(new OnFailureListener() {
-////                            @Override
-////                            public void onFailure(Exception e) {
-////                                Toast.makeText(Registration.this, "Data not saved", Toast.LENGTH_SHORT).show();
-////                            }
-////                        });
-//                String userUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-//
-//                db.collection("users").document(userUid).collection("appointments").document().set(registration)
-//                        .addOnSuccessListener(new OnSuccessListener<Void>() {
-//                            @Override
-//                            public void onSuccess(Void aVoid) {
-//                                Toast.makeText(Registration.this, "Data saved", Toast.LENGTH_SHORT).show();
-//                            }
-//                        })
-//                        .addOnFailureListener(new OnFailureListener() {
-//                            @Override
-//                            public void onFailure(Exception e) {
-//                                Toast.makeText(Registration.this, "Data not saved", Toast.LENGTH_SHORT).show();
-//                            }
-//                        });
-//
-//                Intent i = new Intent(Registration.this, LoginActivity.class);
-//                startActivity(i);
-//            }
-//        });
-//
-//    }
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);

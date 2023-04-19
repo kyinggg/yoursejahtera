@@ -15,16 +15,14 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-
+// sign up function (done by Lee Lek Xiang)
 public class UserIDSignUp extends AppCompatActivity {
 
     private EditText emailEditText;
     private EditText passwordEditText;
     private Button signUpButton;
     private TextView signInTextView;
-
     private FirebaseAuth mAuth;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -37,7 +37,7 @@ import com.google.firebase.auth.FirebaseUser;
 import java.util.ArrayList;
 import java.util.List;
 
-
+//showing hospital location in map (done by Lee Lek Xiang)
 public class MapActivity extends AppCompatActivity{
 
     private MapView map;
